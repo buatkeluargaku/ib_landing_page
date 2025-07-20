@@ -31,5 +31,7 @@
   "footer_copyright": "© 2025 Exnessでの取引。全著作権所有。",
   "placeholder_capital": "例: 100",
   "placeholder_risk": "例: 1",
-  "placeholder_sl": "例: 15"
+  "placeholder_sl": "例: 15",
+  "error_invalid": "有効な数値を入力してください！"
+
 }
