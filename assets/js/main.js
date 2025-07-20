@@ -1,9 +1,19 @@
-const defaultLang = navigator.language.slice(0, 2);
-const select = document.getElementById("languageSelect");
+const supportedLangs = ['en', 'id', 'zh', 'es', 'ja', 'ko'];
 const elements = document.querySelectorAll("[data-i18n]");
 const resultParagraph = document.getElementById("result");
 
-// Fungsi memuat data bahasa
+// Fungsi: Deteksi dan pilih bahasa awal
+function detectLanguage() {
+  const savedLang = localStorage.getItem("lang");
+  if (savedLang && supportedLangs.includes(savedLang)) {
+    return savedLang;
+  }
+
+  const browserLang = navigator.language.slice(0, 2);
+  return supportedLangs.includes(browserLang) ? browserLang : "en";
+}
+
+// Fungsi: Muat file bahasa JSON
 function loadLanguage(lang) {
   fetch(`lang/${lang}.json`)
     .then(res => res.ok ? res.json() : {})
@@ -15,46 +25,32 @@ function loadLanguage(lang) {
         }
       });
       updatePlaceholders(data);
-      updateResultPrefix(data); // Tambahan agar "Hasil: " juga diganti saat bahasa berubah
+      updateResultPrefix(data);
+      localStorage.setItem("lang", lang); // Simpan bahasa agar konsisten kunjungan berikutnya
     })
-    .catch(error => console.error("Fetch error for language file:", error));
+    .catch(error => console.error("Error loading language:", error));
 }
 
-// Fungsi mengambil bahasa tersimpan
-function getSavedLang() {
-  return localStorage.getItem("lang") || defaultLang || "en";
-}
-
-// Fungsi memperbarui placeholder input
+// Fungsi: Update placeholder input
 function updatePlaceholders(data) {
   document.getElementById('capital').placeholder = data['placeholder_capital'] || 'Example: 100';
   document.getElementById('risk').placeholder = data['placeholder_risk'] || 'Example: 1';
   document.getElementById('sl').placeholder = data['placeholder_sl'] || 'Example: 15';
 }
 
-// Fungsi memperbarui label hasil
+// Fungsi: Update label "Result:"
 function updateResultPrefix(data) {
   const resultKey = data['result_text'] || 'Result: ';
   resultParagraph.setAttribute("data-result-prefix", resultKey);
   resultParagraph.textContent = resultKey;
 }
 
-// Event listener untuk select bahasa
-if (select) {
-  select.addEventListener("change", () => {
-    const selectedLang = select.value;
-    localStorage.setItem("lang", selectedLang);
-    loadLanguage(selectedLang);
-  });
-}
-
+// Saat DOM sudah siap
 document.addEventListener("DOMContentLoaded", () => {
-  // Inisialisasi bahasa
-  const savedLang = getSavedLang();
-  if (select) select.value = savedLang;
-  loadLanguage(savedLang);
+  const lang = detectLanguage();
+  loadLanguage(lang);
 
-  // --- Kalkulator Lot ---
+  // Kalkulator lot
   const calculateButton = document.getElementById("calculateBtn");
   const capitalInput = document.getElementById("capital");
   const riskInput = document.getElementById("risk");
@@ -67,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const sl = parseFloat(slInput.value);
 
       if (isNaN(capital) || isNaN(risk) || isNaN(sl) || capital <= 0 || risk <= 0 || sl <= 0) {
-        resultParagraph.textContent = "Result: Please enter valid numeric values!";
+        resultParagraph.textContent = resultParagraph.getAttribute("data-result-prefix") + "Please enter valid numeric values!";
         return;
       }
 
