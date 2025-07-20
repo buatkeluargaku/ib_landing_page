@@ -18,6 +18,7 @@ function loadLanguage(lang) {
   fetch(`lang/${lang}.json`)
     .then(res => res.ok ? res.json() : {})
     .then(data => {
+      window.i18nData = data; // Simpan global untuk akses error text
       elements.forEach(el => {
         const key = el.getAttribute("data-i18n");
         if (data[key]) {
@@ -26,7 +27,7 @@ function loadLanguage(lang) {
       });
       updatePlaceholders(data);
       updateResultPrefix(data);
-      localStorage.setItem("lang", lang); // Simpan bahasa agar konsisten kunjungan berikutnya
+      localStorage.setItem("lang", lang);
     })
     .catch(error => console.error("Error loading language:", error));
 }
@@ -50,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const lang = detectLanguage();
   loadLanguage(lang);
 
-  // Kalkulator lot
   const calculateButton = document.getElementById("calculateBtn");
   const capitalInput = document.getElementById("capital");
   const riskInput = document.getElementById("risk");
@@ -63,7 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const sl = parseFloat(slInput.value);
 
       if (isNaN(capital) || isNaN(risk) || isNaN(sl) || capital <= 0 || risk <= 0 || sl <= 0) {
-        resultParagraph.textContent = resultParagraph.getAttribute("data-result-prefix") + "Please enter valid numeric values!";
+        const prefix = resultParagraph.getAttribute("data-result-prefix") || "Result: ";
+        const errorText = window.i18nData?.error_invalid || "Please enter valid numeric values!";
+        resultParagraph.textContent = prefix + errorText;
         return;
       }
 
