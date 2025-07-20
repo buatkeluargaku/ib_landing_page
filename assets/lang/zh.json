@@ -31,5 +31,7 @@
   "footer_copyright": "© 2025 与 Exness 交易。版权所有。",
   "placeholder_capital": "例如: 100",
   "placeholder_risk": "例如: 1",
-  "placeholder_sl": "例如: 15"
+  "placeholder_sl": "例如: 15",
+  "error_invalid": "请输入有效的数字数值！"
+
 }
