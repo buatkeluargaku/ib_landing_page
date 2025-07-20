@@ -31,5 +31,7 @@
   "footer_copyright": "© 2025 Trade with Exness. All rights reserved.",
   "placeholder_capital": "Example: 100",
   "placeholder_risk": "Example: 1",
-  "placeholder_sl": "Example: 15"
+  "placeholder_sl": "Example: 15",
+  "error_invalid": "Please enter valid numeric values!"
+
 }
