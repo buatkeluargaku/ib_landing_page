@@ -31,5 +31,7 @@
   "footer_copyright": "© 2025 Comercio con Exness. Todos los derechos reservados.",
   "placeholder_capital": "Ej: 100",
   "placeholder_risk": "Ej: 1",
-  "placeholder_sl": "Ej: 15"
+  "placeholder_sl": "Ej: 15",
+  "error_invalid": "¡Por favor, introduzca valores numéricos válidos!"
+
 }
