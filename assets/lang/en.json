@@ -5,10 +5,10 @@
   "btn_explore": "Explore Ecosystem",
   "social_title": "Social Trading: Effortless Investing",
   "social_desc": "For those looking to potentially earn passive income but lack trading knowledge, Exness Social Trading offers a great solution. You can simply invest in strategies of experienced traders by reviewing their historical performance. Remember to choose carefully!",
-  "social_feature1": "📈 Choose Top Traders",
-  "social_feature2": "⚙️ Automated & Easy",
-  "social_feature3": "💰 Start from $10",
-  "social_feature4": "🔍 Transparent Monitoring",
+  "social_feature1": "📈 Choose Top Traders: Review performance statistics and pick traders with the best track record.",
+  "social_feature2": "⚙️ Automated & Easy: Copy trades in real-time without needing advanced skills.",
+  "social_feature3": "💰 Start from $10: Affordable investment opportunities for everyone.",
+  "social_feature4": "🔍 Transparent Monitoring: Directly monitor results and risks in the Exness app.",
   "advantages_title": "Advantages of Exness Broker",
   "advantage1_title": "Social Trading",
   "advantage1_desc": "Follow pro traders and potentially earn profits without trading yourself.",
@@ -29,7 +29,7 @@
   "btn_start": "🚀 Get Started Now",
   "footer_risk": "Risk Warning: Trading CFDs carries a high level of risk and may not be suitable for all investors. Please ensure you understand the risks involved.",
   "footer_copyright": "© 2025 Trade with Exness. All rights reserved.",
-  "placeholder_capital": "Ex: 100",
-  "placeholder_risk": "Ex: 1",
-  "placeholder_sl": "Ex: 15"
+  "placeholder_capital": "Example: 100",
+  "placeholder_risk": "Example: 1",
+  "placeholder_sl": "Example: 15"
 }
