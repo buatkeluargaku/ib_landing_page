@@ -31,5 +31,7 @@
   "footer_copyright": "© 2025 Exness와 함께 거래. 모든 권리 보유.",
   "placeholder_capital": "예: 100",
   "placeholder_risk": "예: 1",
-  "placeholder_sl": "예: 15"
+  "placeholder_sl": "예: 15",
+  "error_invalid": "유효한 숫자 값을 입력해주세요!"
+
 }
